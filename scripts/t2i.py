@@ -102,4 +102,4 @@ if __name__ == "__main__":
                 dtype=dtype, device=device, camera=camera, num_frames=args.num_frames)
         img = np.concatenate(img, 1)
 
-        Image.fromarray(img).save(os.path.join(args.output_path, f"{j}.png"))
+        Image.fromarray(img).save(os.path.join(args.output_path, f"sample_{j}.png"))
