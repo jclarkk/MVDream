@@ -49,6 +49,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, default="sd-v2.1-base-4view", help="load pre-trained model from hugginface")
     parser.add_argument("--config_path", type=str, default=None, help="load model from local config (override model_name)")
+    parser.add_argument("--output_path", type=str, default=os.getcwd(), help="Output directory for images")
     parser.add_argument("--ckpt_path", type=str, default=None, help="path to local checkpoint")
     parser.add_argument("--text", type=str, default="an astronaut riding a horse")
     parser.add_argument("--suffix", type=str, default=", 3d asset")
@@ -98,6 +99,5 @@ if __name__ == "__main__":
         img = t2i(model, args.size, t, uc, sampler, step=50, scale=10, batch_size=batch_size, ddim_eta=0.0, 
                 dtype=dtype, device=device, camera=camera, num_frames=args.num_frames)
         img = np.concatenate(img, 1)
-        images.append(img)
-    images = np.concatenate(images, 0)
-    Image.fromarray(images).save(f"sample.png")
+
+        Image.fromarray([img]).save(os.path.join(args.output_path, f"{j}.png"))
