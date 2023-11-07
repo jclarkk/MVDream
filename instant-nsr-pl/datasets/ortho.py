@@ -110,7 +110,7 @@ def load_a_prediction(root_dir, imSize, view_types, load_color=False, cam_pose_d
         mask = normal[:, :, 3]
         normal = normal[:, :, :3]
 
-        color_mask = np.array(PIL.Image.open(os.path.join(root_dir, 'masked_colors/rgb_000_%s.png'%( view))).resize(imSize))[:, :, 3]
+        color_mask = np.array(PIL.Image.open(os.path.join(root_dir, 'rgb_000_%s.png'%( view))).resize(imSize))[:, :, 3]
         invalid_color_mask = color_mask < 255*0.5
         threshold =  np.ones_like(image[:, :, 0]) * 250
         invalid_white_mask = (image[:, :, 0] > threshold) & (image[:, :, 1] > threshold) & (image[:, :, 2] > threshold)
