@@ -197,7 +197,7 @@ class OrthoDatasetBase():
 
         self.images_np, self.masks_np, self.normals_cam_np, self.normals_world_np, \
             self.pose_all_np, self.w2c_all_np, self.origins_np, self.directions_np, self.rgb_masks_np = load_a_prediction(
-                self.data_dir, self.object_name, self.imSize, self.view_types,
+                self.data_dir, self.imSize, self.view_types,
                 self.load_color, self.cam_pose_dir, normal_system='front',
                 camera_type=self.camera_type, cam_params=self.camera_params)
 
